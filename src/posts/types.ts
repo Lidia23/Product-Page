@@ -26,8 +26,15 @@ export type PostData = {
     reviewerName: string;
     reviewerEmail: string;
   }[];
+  minimumOrderQuantity: number;
   returnPolicy: string;
-  images: string;
+  meta: {
+    createdAt: string;
+    updatedAt: string;
+    barcode: number;
+    qrCode: string;
+  };
+  images: string[];
   thumbnail: string;
 };
 

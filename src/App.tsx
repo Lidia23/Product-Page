@@ -2,13 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { PostPage } from './posts/PostPage';
 import { PostDetails } from './posts/PostDetails';
+import './App.css';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<PostPage />} />
-        <Route path="/post/:postId" element={<PostDetails />} />
+        <Route path="/:postId" element={<PostDetails />} />
       </Routes>
     </Router>
   );

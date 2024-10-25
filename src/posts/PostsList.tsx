@@ -12,7 +12,7 @@ export function PostsList({ posts }: Props) {
         {posts.map((post) => (
           <li key={post.id}>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-full flex flex-col">
-              <a href="#" className="relative inline-flex justify-center items-center">
+              <a href="#" className="relative inline-flex justify-center items-center rounded-t-lg">
                 <img
                   className="rounded-t-lg h-auto max-w-full"
                   src={post.thumbnail}
@@ -48,7 +48,7 @@ export function PostsList({ posts }: Props) {
                     ${post.price}
                   </span>
                   <Link
-                    to={`/post/${post.id}`}
+                    to={`/${post.id}`}
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Read more

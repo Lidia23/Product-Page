@@ -5,6 +5,9 @@ import { useParams } from 'react-router-dom';
 
 export function PostDetails() {
   const [post, setPost] = useState<PostData>();
+  const [mainImage, setMainImage] = useState<string>();
+  const [quantity, setQuantity] = useState<number>(0);
+  const [error, setError] = useState<string>();
   const { postId } = useParams();
   useEffect(() => {
     const fetchPost = async () => {
@@ -25,16 +28,44 @@ export function PostDetails() {
   if (!post) {
     return <div>Loading...</div>;
   }
+  const handleImage = (image: string) => {
+    setMainImage(image);
+  };
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value, 10);
+    if (value < post.minimumOrderQuantity) {
+      setError('The quantity is less than the minimum that you can buy');
+    } else if (value > post.stock) {
+      setError('No stock!');
+    } else {
+      setError('');
+    }
+
+    setQuantity(value);
+  };
+  const isOrderPossible = post.stock >= post.minimumOrderQuantity;
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10 mb-10">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="slider-box w-full h-full max-lg:mx-auto mx-0">
             <img
-              src={post.images}
+              id="main"
+              src={mainImage || post.images[0]}
               alt={post.title}
               className="max-lg:mx-auto rounded-2xl object-cover"
             />
+            <div className="flex gap-4 py-4 justify-center overflow-x-auto">
+              {post.images.map((image) => (
+                <img
+                  src={image}
+                  alt={post.title}
+                  className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                  onClick={() => handleImage(image)}
+                />
+              ))}
+            </div>
+
             <div className="w-full flex justify-items-center mt-4">
               <table className="w-full text-center text-sm text-gray-500 dark:text-gray-400">
                 <tbody>
@@ -181,6 +212,15 @@ export function PostDetails() {
                       Brand:
                     </th>
                     <td className="px-6 py-4">{post.brand}</td>
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium whitespace-nowrap dark:text-gray-900"
+                    >
+                      Created:
+                    </th>
+                    <td className="px-6 py-4">
+                      {new Date(post.meta.createdAt).toLocaleDateString()}
+                    </td>
                   </tr>
                   <tr className="bg-white border-b">
                     <th
@@ -190,6 +230,15 @@ export function PostDetails() {
                       SKU:
                     </th>
                     <td className="px-6 py-4">{post.sku}</td>
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium whitespace-nowrap dark:text-gray-900"
+                    >
+                      Updated:
+                    </th>
+                    <td className="px-6 py-4">
+                      {new Date(post.meta.updatedAt).toLocaleDateString()}
+                    </td>
                   </tr>
                   <tr className="bg-white border-b">
                     <th
@@ -199,8 +248,15 @@ export function PostDetails() {
                       Weight:
                     </th>
                     <td className="px-6 py-4">{post.weight}</td>
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium whitespace-nowrap dark:text-gray-900"
+                    >
+                      Bar:
+                    </th>
+                    <td className="px-6 py-4">{post.meta.barcode}</td>
                   </tr>
-                  <tr className="bg-white">
+                  <tr className="bg-white border-b">
                     <th
                       scope="row"
                       className="px-6 py-4 font-medium whitespace-nowrap dark:text-gray-900"
@@ -210,36 +266,68 @@ export function PostDetails() {
                     <td className="px-6 py-4">
                       {post.dimensions.width} x {post.dimensions.height} x {post.dimensions.depth}
                     </td>
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium whitespace-nowrap dark:text-gray-900"
+                    >
+                      QR Code
+                    </th>
+                    <td className="px-6 py-4">
+                      <img src={post.meta.qrCode} className="h-20 w-20 object-contain" />
+                    </td>
+                  </tr>
+                  <tr className="bg-white mb-3">
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium whitespace-nowrap dark:text-gray-900"
+                    >
+                      Min. Order Quantity:
+                    </th>
+                    <td className="px-6 py-4">{post.minimumOrderQuantity}</td>
                   </tr>
                 </tbody>
               </table>
-              <div className="flex items-center flex-col min-[400px]:flex-row gap-3 mb-3 min-[400px]:mb-8">
-                <div className=" flex items-center justify-center border border-gray-400 rounded-full">
-                  <input
-                    type="text"
-                    className="font-semibold text-gray-900 text-lg py-3 px-2 w-full min-[400px]:min-w-[75px] h-full bg-transparent placeholder:text-gray-900 text-center hover:text-indigo-600 outline-0 hover:placeholder:text-indigo-600"
-                    placeholder="1"
-                  />
-                </div>
-                <button className="group py-3 px-5 rounded-full bg-indigo-50 text-indigo-600 font-semibold text-lg w-full flex items-center justify-center gap-2 shadow-sm shadow-transparent transition-all duration-500 hover:shadow-indigo-300 hover:bg-indigo-100">
-                  <svg
-                    className="stroke-indigo-600 transition-all duration-500 group-hover:stroke-indigo-600"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10.7394 17.875C10.7394 18.6344 10.1062 19.25 9.32511 19.25C8.54402 19.25 7.91083 18.6344 7.91083 17.875M16.3965 17.875C16.3965 18.6344 15.7633 19.25 14.9823 19.25C14.2012 19.25 13.568 18.6344 13.568 17.875M4.1394 5.5L5.46568 12.5908C5.73339 14.0221 5.86724 14.7377 6.37649 15.1605C6.88573 15.5833 7.61377 15.5833 9.06984 15.5833H15.2379C16.6941 15.5833 17.4222 15.5833 17.9314 15.1605C18.4407 14.7376 18.5745 14.0219 18.8421 12.5906L19.3564 9.84059C19.7324 7.82973 19.9203 6.8243 19.3705 6.16215C18.8207 5.5 17.7979 5.5 15.7522 5.5H4.1394ZM4.1394 5.5L3.66797 2.75"
-                      stroke=""
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                  Add to cart
-                </button>
-              </div>
+
+              {isOrderPossible ? (
+                <>
+                  <div className="flex items-center flex-col min-[400px]:flex-row gap-3 mb-3 min-[400px]:mb-8">
+                    <div className=" flex items-center justify-center border border-gray-400 rounded-full">
+                      <input
+                        type="text"
+                        className="font-semibold text-gray-900 text-lg py-3 px-2 w-full min-[400px]:min-w-[75px] h-full bg-transparent placeholder:text-gray-900 text-center hover:text-indigo-600 outline-0 hover:placeholder:text-indigo-600"
+                        min={post.minimumOrderQuantity}
+                        value={quantity || 0}
+                        onChange={handleQuantityChange}
+                      />
+                    </div>
+                    <button className="group py-3 px-5 rounded-full bg-indigo-50 text-indigo-600 font-semibold text-lg w-full flex items-center justify-center gap-2 shadow-sm shadow-transparent transition-all duration-500 hover:shadow-indigo-300 hover:bg-indigo-100">
+                      <svg
+                        className="stroke-indigo-600 transition-all duration-500 group-hover:stroke-indigo-600"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 22 22"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.7394 17.875C10.7394 18.6344 10.1062 19.25 9.32511 19.25C8.54402 19.25 7.91083 18.6344 7.91083 17.875M16.3965 17.875C16.3965 18.6344 15.7633 19.25 14.9823 19.25C14.2012 19.25 13.568 18.6344 13.568 17.875M4.1394 5.5L5.46568 12.5908C5.73339 14.0221 5.86724 14.7377 6.37649 15.1605C6.88573 15.5833 7.61377 15.5833 9.06984 15.5833H15.2379C16.6941 15.5833 17.4222 15.5833 17.9314 15.1605C18.4407 14.7376 18.5745 14.0219 18.8421 12.5906L19.3564 9.84059C19.7324 7.82973 19.9203 6.8243 19.3705 6.16215C18.8207 5.5 17.7979 5.5 15.7522 5.5H4.1394ZM4.1394 5.5L3.66797 2.75"
+                          stroke=""
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                      Add to cart
+                    </button>
+                  </div>
+                  {error && <p className="text-red-500 mb-3 -mt-3">{error}</p>}
+                </>
+              ) : (
+                <p className="text-red-500 mb-3">
+                  Sorry, this product cannot be ordered in the required quantity. Only {post.stock}{' '}
+                  units available.
+                </p>
+              )}
+
               <button className="text-center w-full px-5 py-4 rounded-[100px] bg-indigo-600 flex items-center justify-center font-semibold text-lg text-white shadow-sm shadow-transparent transition-all duration-500 hover:bg-indigo-700 hover:shadow-indigo-300">
                 Buy Now
               </button>
@@ -307,7 +395,7 @@ export function PostDetails() {
             </div>
             <div className="dark:text-slate-700 flex justify-between">
               {review.reviewerEmail}
-              <em className="font-italic">{review.date}</em>
+              <em className="font-italic">{new Date(review.date).toLocaleDateString()}</em>
             </div>
           </div>
         </div>
