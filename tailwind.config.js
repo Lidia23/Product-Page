@@ -1,3 +1,5 @@
+const { isWhiteSpaceLike } = require('typescript');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
