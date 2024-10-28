@@ -30,10 +30,6 @@ code {
   transition: transform 0.3s ease;
 }
 
-/* .post-card:hover .post-image {
-  transform: scale(1.05);
-} */
-
 /* Pulsing effect for discount badge */
 @keyframes pulse {
   0%,
