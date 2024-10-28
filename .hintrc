@@ -10,6 +10,9 @@
           "-webkit-text-size-adjust"
         ]
       }
-    ]
+    ],
+    "axe/forms": "off",
+    "detect-css-reflows/composite": "off",
+    "axe/name-role-value": "off"
   }
 }

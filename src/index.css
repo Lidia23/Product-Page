@@ -13,3 +13,184 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+/* Fade-in and slight lift animation for each post card */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale up animation on hover for the post image */
+.post-image {
+  transition: transform 0.3s ease;
+}
+
+/* .post-card:hover .post-image {
+  transform: scale(1.05);
+} */
+
+/* Pulsing effect for discount badge */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.discount-badge {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Hover effect for the post card and image */
+
+.post-image {
+  transition: transform 0.3s ease;
+}
+
+.post-item:hover {
+  transform: scale(1.05);
+}
+
+/* Initial state for the animation */
+.post-item {
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  transition:
+    opacity 0.4s ease-out,
+    transform 0.4s ease-out;
+}
+
+/* When the element is in view */
+.post-item.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Add staggered delays for a cascading effect */
+.post-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.post-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.post-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+/* Add more as needed for cascading effect */
+/* Initial styling with box shadow */
+.post-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  will-change: transform, box-shadow;
+}
+
+/* Add perspective for child elements */
+.post-card img,
+.post-card .post-content {
+  transform: translateZ(10px);
+  will-change: transform;
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+#postPage {
+  scroll-behavior: smooth;
+  scroll-margin-top: 20px; /* Adjust as needed */
+}
+
+/*HEADER*/
+/* Animation for Drawer */
+#drawer-navigation {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Animation for Dropdown */
+.transition-max-height {
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.max-h-0 {
+  max-height: 0;
+}
+
+.max-h-40 {
+  max-height: 10rem; /* Adjust this value based on your content */
+}
+
+/* Rotate Animation for Dropdown Arrow */
+.transform {
+  transition: transform 0.3s ease;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Search.css */
+
+/* Optional CSS if you want to add more styling */
+button {
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #4c8caf;
+}
+
+input {
+  max-width: 300px;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.searchBoxOpen {
+  animation: open 0.2s ease-in-out;
+}
+@keyframes close {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+}
+.searchBoxClose {
+  animation: close 0.2s ease-in;
+}
+
+@keyframes modal {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: width;
+  }
+}
+.modal {
+  will-change: scale;
+  animation: modal 0.2s ease;
+}

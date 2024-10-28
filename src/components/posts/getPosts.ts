@@ -1,19 +1,24 @@
 import { PostData, ApiResponse } from './types';
 
 export async function getPosts(
-  page: number,
   limit: number,
 ): Promise<{ products: PostData[]; total: number; limit: number; skip: number }> {
-  const skip = page * limit;
-  const response = await fetch(`${process.env.REACT_APP_API_URL}?limit=${limit}&skip=${skip}`);
+  const response = await fetch(`${process.env.REACT_APP_API_URL}?limit=0`);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
   }
 
   const body = (await response.json()) as ApiResponse;
+  console.log(body.products);
   assertIsPosts(body);
-  return { products: body.products, total: body.total, limit: body.limit, skip: body.skip };
+
+  return {
+    products: body.products,
+    total: body.total,
+    limit: body.limit,
+    skip: body.skip,
+  };
 }
 
 export function assertIsPosts(data: any): asserts data is ApiResponse {
