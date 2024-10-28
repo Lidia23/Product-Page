@@ -155,6 +155,7 @@ input {
   max-width: 300px;
 }
 
+/* Open search input*/
 @keyframes open {
   from {
     opacity: 0;
@@ -168,6 +169,7 @@ input {
 .searchBoxOpen {
   animation: open 0.2s ease-in-out;
 }
+/* Close search input*/
 @keyframes close {
   from {
     opacity: 1;
@@ -182,6 +184,7 @@ input {
   animation: close 0.2s ease-in;
 }
 
+/*Add animation for the Modal*/
 @keyframes modal {
   from {
     scale: 0;
