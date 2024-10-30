@@ -32,7 +32,7 @@ export function Search({ content, setSearch }: Props) {
       <button
         type="button"
         onClick={handleVisibility}
-        className="z-40 p-2.5 text-sm font-medium text-customBlue dark:text-white bg-white hover:bg-gray-300 border-gray-700  rounded-lg px-5 py-2.5 dark:bg-slate-800 dark:hover:bg-slate-600"
+        className="z-40 p-2.5 text-sm font-medium text-customBlue dark:text-white bg-white hover:bg-gray-300 border-gray-700  rounded-lg lg:px-5 py-2.5 dark:bg-slate-800 dark:hover:bg-slate-600"
       >
         <svg
           className="w-4 h-4"
