@@ -390,12 +390,11 @@ export function PostDetails() {
                 {[...Array(5)].map((_, index) => {
                   const starValue = index + 1;
 
-                  // Determine if the star is full, half, or empty
-                  let starClass = 'text-gray-300'; // Empty star by default
+                  let starClass = 'text-gray-300'; 
                   if (review.rating >= starValue) {
-                    starClass = 'text-yellow-400'; // Full star
+                    starClass = 'text-yellow-400'; 
                   } else if (review.rating >= starValue - 0.5) {
-                    starClass = 'text-yellow-400 half'; // Half star
+                    starClass = 'text-yellow-400 half'; 
                   }
 
                   return (
