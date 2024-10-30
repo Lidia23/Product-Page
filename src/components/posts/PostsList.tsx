@@ -29,7 +29,7 @@ export function PostsList({ posts }: Props) {
   }, [posts, addVisibleClass]);
 
   return (
-    <ul className="list-none grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 items-stretch mx-4">
+    <ul className="list-none grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6 items-stretch mx-4">
       {posts.map((post, index) => (
         <li key={post.id} ref={(el) => (postRefs.current[index] = el)} className="post-item">
           <div className="post-card max-w-sm bg-slate-100 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 h-full flex flex-col transition-transform transform-gpu hover:translate-y-[-10px] hover:shadow-lg dark:hover:shadow-[0_6px_16px_rgba(255,255,255,0.25)]">
