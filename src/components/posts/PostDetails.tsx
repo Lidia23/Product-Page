@@ -59,7 +59,7 @@ export function PostDetails() {
 
   return (
     <>
-      <div className="text-slate-900 dark:rounded-md dark:bg-gray-900 dark:text-gray-200 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10 mb-10">
+      <div className="text-slate-900 dark:rounded-md dark:bg-gray-900 dark:text-gray-200 mx-auto max-w-7xl px-4 sm:lg:px-6 md:px-3 lg:px-8 mt-10 mb-10">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="slider-box w-full h-full max-lg:mx-auto mx-0 mb-5 mt-5">
             <img
@@ -142,9 +142,9 @@ export function PostDetails() {
                     </th>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4">{post.warrantyInformation}</td>
-                    <td className="px-6 py-4">{post.shippingInformation}</td>
-                    <td className="px-6 py-4">{post.returnPolicy}</td>
+                    <td className="lg:px-6 py-4">{post.warrantyInformation}</td>
+                    <td className="lg:px-6 py-4">{post.shippingInformation}</td>
+                    <td className="lg:px-6 py-4">{post.returnPolicy}</td>
                   </tr>
                 </tbody>
               </table>
@@ -223,72 +223,72 @@ export function PostDetails() {
                   <tr className="border-b dark:border-gray-700">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium whitespace-nowrap text-gray-900 dark:text-gray-300"
+                      className="lg:px-6 py-4 font-medium  text-gray-900 dark:text-gray-300"
                     >
                       Brand:
                     </th>
-                    <td className="px-6 py-4 dark:text-gray-200">{post.brand}</td>
+                    <td className="lg:px-6 py-4 dark:text-gray-200">{post.brand}</td>
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium whitespace-nowrap text-gray-900 dark:text-gray-300"
+                      className="lg:px-6 py-4 font-medium  text-gray-900 dark:text-gray-300"
                     >
                       Created:
                     </th>
-                    <td className="px-6 py-4 dark:text-gray-200">
+                    <td className="lg:px-6 py-4 dark:text-gray-200">
                       {new Date(post.meta.createdAt).toLocaleDateString()}
                     </td>
                   </tr>
                   <tr className="border-b dark:border-gray-700">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium whitespace-nowrap text-gray-900 dark:text-gray-300"
+                      className="lg:px-6 py-4 font-medium  text-gray-900 dark:text-gray-300"
                     >
                       SKU:
                     </th>
-                    <td className="px-6 py-4 dark:text-gray-200">{post.sku}</td>
+                    <td className="lg:px-6 py-4 dark:text-gray-200">{post.sku}</td>
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium whitespace-nowrap text-gray-900 dark:text-gray-300"
+                      className="lg:px-6 py-4 font-medium  text-gray-900 dark:text-gray-300"
                     >
                       Updated:
                     </th>
-                    <td className="px-6 py-4 dark:text-gray-200">
+                    <td className="lg:px-6 py-4 dark:text-gray-200">
                       {new Date(post.meta.updatedAt).toLocaleDateString()}
                     </td>
                   </tr>
                   <tr className="border-b dark:border-gray-700">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium whitespace-nowrap text-gray-900 dark:text-gray-300"
+                      className="lg:px-6 py-4 font-medium  text-gray-900 dark:text-gray-300"
                     >
                       Weight:
                     </th>
-                    <td className="px-6 py-4 dark:text-gray-200">{post.weight}</td>
+                    <td className="lg:px-6 py-4 dark:text-gray-200">{post.weight}</td>
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium whitespace-nowrap text-gray-900 dark:text-gray-300"
+                      className="lg:px-6 py-4 font-medium  text-gray-900 dark:text-gray-300"
                     >
                       Bar:
                     </th>
-                    <td className="px-6 py-4 dark:text-gray-200">{post.meta.barcode}</td>
+                    <td className="lg:px-6 py-4 dark:text-gray-200">{post.meta.barcode}</td>
                   </tr>
                   <tr className="border-b dark:border-gray-700">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium whitespace-nowrap text-gray-900 dark:text-gray-300"
+                      className="lg:px-6 py-4 font-medium  text-gray-900 dark:text-gray-300"
                     >
                       Dimension:
                     </th>
-                    <td className="px-6 py-4 dark:text-gray-200">
+                    <td className="lg:px-6 py-4 dark:text-gray-200">
                       {post.dimensions.width} x {post.dimensions.height} x {post.dimensions.depth}
                     </td>
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium whitespace-nowrap text-gray-900 dark:text-gray-300"
+                      className="lg:px-6 py-4 font-medium  text-gray-900 dark:text-gray-300"
                     >
                       QR Code
                     </th>
-                    <td className="px-6 py-4">
+                    <td className="lg:px-6 py-4">
                       <img
                         src={post.meta.qrCode}
                         alt="QR Code"
@@ -299,11 +299,11 @@ export function PostDetails() {
                   <tr className="mb-3">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium whitespace-nowrap text-gray-900 dark:text-gray-300"
+                      className="lg:px-6 py-4 font-medium  text-gray-900 dark:text-gray-300"
                     >
                       Min. Order Quantity:
                     </th>
-                    <td className="px-6 py-4 dark:text-gray-200">{post.minimumOrderQuantity}</td>
+                    <td className="lg:px-6 py-4 dark:text-gray-200">{post.minimumOrderQuantity}</td>
                   </tr>
                 </tbody>
               </table>
@@ -378,7 +378,7 @@ export function PostDetails() {
       </div>
 
       {post.reviews.map((review) => (
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-sm flex flex-col-reverse justify-items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-6 dark:highlight-white/5 shadow-lg mb-10">
+        <div className="mx-auto max-w-4xl px-4 sm:lg:px-6 md:px-3 lg:px-8 text-sm flex flex-col-reverse justify-items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-6 dark:highlight-white/5 shadow-lg mb-10">
           <blockquote className="mt-6 text-slate-700 dark:text-slate-300">
             <p>{review.comment}</p>
           </blockquote>
