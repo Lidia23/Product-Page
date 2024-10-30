@@ -24,7 +24,7 @@ export function Search({ content, setSearch }: Props) {
           onChange={handleSearch}
           className={`${
             isVisible ? 'searchBoxOpen' : 'searchBoxClose'
-          } -mr-3 z-30 p-2.5 text-sm font-medium text-customBlue dark:text-white bg-white hover:bg-gray-300 border-gray-700 focus:outline-none rounded-lg xs:px-0 lg:px-5 py-2.5 dark:bg-slate-800 dark:hover:bg-slate-600`}
+          } -mr-3 z-30 p-2.5 text-sm font-medium text-customBlue dark:text-white bg-white hover:bg-gray-300 border-gray-700 focus:outline-none rounded-lg xs:px-2 lg:px-5 py-2.5 dark:bg-slate-800 dark:hover:bg-slate-600`}
           placeholder="Search Mockups, Logos..."
           required
         />
