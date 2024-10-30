@@ -1,9 +1,11 @@
-/*Add Background colors*/
+/* Base styling for dark mode */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #102c57;
   }
 }
+
+/* Animation keyframes */
 @keyframes colorChange {
   0% {
     background-color: #37b7c3;
@@ -27,6 +29,7 @@
     background-color: #ffb1b15b;
   }
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -36,32 +39,32 @@
   }
 }
 
-
-.circle {
-  width: 900px;
-  height: 700px;
-  border-radius: 70%;
-  position: fixed;
-  animation:
-    colorChange 6s infinite alternate,
-    fadeIn 3s ease-out;
-  opacity: 0.3;
-  z-index: -1;
-  filter: blur(90px);
-}
+/* Circle base styling */
+.circle,
 .circle2 {
   width: 900px;
   height: 700px;
   border-radius: 70%;
   position: fixed;
+  opacity: 0.3;
+  z-index: -1;
+  filter: blur(90px);
+  animation: fadeIn 3s ease-out;
+}
+
+.circle {
+  animation:
+    colorChange 6s infinite alternate,
+    fadeIn 3s ease-out;
+}
+
+.circle2 {
   animation:
     colorChange2 6s infinite alternate,
     fadeIn 3s ease-out;
-  opacity: 0.3; 
-  z-index: -1;
-  filter: blur(90px);
 }
 
+/* Circle positioning with delays */
 .circle-1 {
   top: -20%;
   left: -20%;
@@ -87,7 +90,6 @@
   left: 80%;
   animation-delay: 5s;
 }
-
 .circle-6 {
   top: 100%;
   left: 90%;
@@ -107,4 +109,117 @@
   top: -70%;
   left: 20%;
   animation-delay: 7s;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .circle,
+  .circle2 {
+    width: 600px;
+    height: 500px;
+    filter: blur(60px); /* Reduce blur */
+  }
+
+  /* Adjust circle positions for smaller screens */
+  .circle-1 {
+    top: -30%;
+    left: -30%;
+    animation-delay: 0s;
+  }
+  .circle-2 {
+    top: 20%;
+    left: 30%;
+    animation-delay: 1s;
+  }
+  .circle-3 {
+    top: 40%;
+    left: 60%;
+    animation-delay: 3s;
+  }
+  .circle-4 {
+    top: 60%;
+    left: 10%;
+    animation-delay: 4s;
+  }
+  .circle-5 {
+    top: 75%;
+    left: 70%;
+    animation-delay: 5s;
+  }
+  .circle-6 {
+    top: 90%;
+    left: 80%;
+    animation-delay: 6s;
+  }
+  .circle-7 {
+    top: -15%;
+    left: 40%;
+    animation-delay: 0s;
+  }
+  .circle-8 {
+    bottom: -25%;
+    left: -15%;
+    animation-delay: 2s;
+  }
+  .circle-9 {
+    top: -60%;
+    left: 15%;
+    animation-delay: 7s;
+  }
+}
+
+@media (max-width: 480px) {
+  .circle,
+  .circle2 {
+    width: 400px;
+    height: 300px;
+    filter: blur(40px); /* Further reduce blur */
+  }
+
+  /* Further position adjustments for very small screens */
+  .circle-1 {
+    top: -40%;
+    left: -40%;
+    animation-delay: 0s;
+  }
+  .circle-2 {
+    top: 10%;
+    left: 20%;
+    animation-delay: 1s;
+  }
+  .circle-3 {
+    top: 30%;
+    left: 50%;
+    animation-delay: 3s;
+  }
+  .circle-4 {
+    top: 50%;
+    left: 10%;
+    animation-delay: 4s;
+  }
+  .circle-5 {
+    top: 65%;
+    left: 60%;
+    animation-delay: 5s;
+  }
+  .circle-6 {
+    top: 80%;
+    left: 70%;
+    animation-delay: 6s;
+  }
+  .circle-7 {
+    top: -20%;
+    left: 30%;
+    animation-delay: 0s;
+  }
+  .circle-8 {
+    bottom: -30%;
+    left: -20%;
+    animation-delay: 2s;
+  }
+  .circle-9 {
+    top: -50%;
+    left: 10%;
+    animation-delay: 7s;
+  }
 }
