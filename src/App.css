@@ -117,10 +117,9 @@
   .circle2 {
     width: 600px;
     height: 500px;
-    filter: blur(60px); /* Reduce blur */
+    filter: blur(60px);
   }
 
-  /* Adjust circle positions for smaller screens */
   .circle-1 {
     top: -30%;
     left: -30%;
@@ -168,15 +167,15 @@
   }
 }
 
+/* Further adjustments for very small screens */
 @media (max-width: 480px) {
   .circle,
   .circle2 {
     width: 400px;
     height: 300px;
-    filter: blur(40px); /* Further reduce blur */
+    filter: blur(40px);
   }
 
-  /* Further position adjustments for very small screens */
   .circle-1 {
     top: -40%;
     left: -40%;
@@ -219,6 +218,62 @@
   }
   .circle-9 {
     top: -50%;
+    left: 10%;
+    animation-delay: 7s;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (orientation: landscape) and (max-height: 480px) {
+  .circle,
+  .circle2 {
+    width: 350px;
+    height: 250px;
+    filter: blur(30px);
+  }
+
+  .circle-1 {
+    top: -25%;
+    left: -25%;
+    animation-delay: 0s;
+  }
+  .circle-2 {
+    top: 15%;
+    left: 25%;
+    animation-delay: 1s;
+  }
+  .circle-3 {
+    top: 30%;
+    left: 55%;
+    animation-delay: 3s;
+  }
+  .circle-4 {
+    top: 45%;
+    left: 5%;
+    animation-delay: 4s;
+  }
+  .circle-5 {
+    top: 60%;
+    left: 50%;
+    animation-delay: 5s;
+  }
+  .circle-6 {
+    top: 75%;
+    left: 60%;
+    animation-delay: 6s;
+  }
+  .circle-7 {
+    top: -15%;
+    left: 35%;
+    animation-delay: 0s;
+  }
+  .circle-8 {
+    bottom: -20%;
+    left: -15%;
+    animation-delay: 2s;
+  }
+  .circle-9 {
+    top: -40%;
     left: 10%;
     animation-delay: 7s;
   }
